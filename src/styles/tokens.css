@@ -1,0 +1,19 @@
+:root {
+  --color-bg: #10110f;
+  --color-surface: #171815;
+  --color-surface-raised: #1d1e1a;
+  --color-gold: #d0a377;
+  --color-gold-light: #e0bb96;
+  --color-text: #f2f0e9;
+  --color-muted: #aeafa5;
+  --color-border: #34352e;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-display: 'Arial Black', Arial, Helvetica, sans-serif;
+  --text-body: 15px;
+  --text-control: 12px;
+  --text-small: 12px;
+  --text-label: 11px;
+  --container: 1280px;
+  --gutter: clamp(24px, 5vw, 80px);
+  --header-height: 96px;
+}
