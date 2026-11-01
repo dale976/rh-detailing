@@ -10,27 +10,11 @@ import {
 } from 'node:fs';
 import { resolve, join } from 'node:path';
 
-// Always rebuild so an earlier production bundle cannot slip into a review upload.
-execFileSync(
-  process.execPath,
-  ['node_modules/vite/bin/vite.js', 'build', '--mode', 'review'],
-  { stdio: 'inherit' },
-);
+// Build all static routes with review indexing protection.
+execFileSync(process.execPath, ['scripts/build.mjs', '--review'], {
+  stdio: 'inherit',
+});
 const dist = resolve('dist');
-const html = join(dist, 'index.html');
-writeFileSync(
-  html,
-  readFileSync(html, 'utf8').replace(
-    '</head>',
-    '<meta name="robots" content="noindex, nofollow" />\n</head>',
-  ),
-);
-writeFileSync(join(dist, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
-writeFileSync(
-  join(dist, '_headers'),
-  readFileSync(join(dist, '_headers'), 'utf8') +
-    '\n/*\n  X-Robots-Tag: noindex, nofollow\n',
-);
 function checkFiles(directory) {
   for (const entry of readdirSync(directory)) {
     const file = join(directory, entry);

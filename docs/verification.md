@@ -24,3 +24,16 @@ This is a local build and preview. The existing Wix website, domain and hosting 
 - Contact form and asynchronous message panel inspected in the browser at desktop and 390 px widths. Missing-key notices and disabled submission verified. Mobile hero controls remain clear of the launcher.
 - Behold gallery code is prepared; real Instagram media cannot be verified until the client authorises a feed.
 - Cloudflare review ZIP inspected for indexing directives, asset size limits and absence of source/environment files. No deployment, account changes or DNS changes performed.
+
+## SEO and performance — 1 November 2026
+
+- React/Vite now renders each public route at build time, including unique titles/descriptions, canonical URLs and social metadata. A verified Organization JSON-LD record adds business contact/service-area/profile details without an address, invented hours or self-serving review ratings.
+- Generated `404.html` and removed the catch-all homepage rewrite. Cloudflare should supply extensionless HTML routes and real missing-page status codes; verify these on the deployed host.
+- Responsive 640/1280px WebP images replace runtime JPEGs. Corrected dimensions; contact imagery is lazy-loaded. Larger WebPs are 64–73% smaller than original JPEGs.
+- Hero film retains its 52.34-second duration. Desktop H.264 is 5,231,528 bytes versus 15,650,595 originally; mobile H.264 is 1,756,998 bytes. Audio removed, fast-start enabled. Inspected an extracted mobile frame. Original film backed up outside the repository at `/private/tmp/rh-detailing-original-hero.mp4` (temporary storage).
+- `npm run check`: formatting, 13 unit/regression tests, production build and the explicit output SEO contract test pass. SEO contract test is intentionally skipped in the pre-build unit run and runs after the build. Review build and separate review-mode SEO output checks pass too.
+- Browser checks on generated static output: service-specific contact selection, single canonical/title, image loading and message panel interaction. No browser console warnings/errors observed in these checks. No live enquiries sent.
+- Independent read-only code review found no P1/P2 regressions. Mobile-device/network field measurements and Cloudflare response headers/statuses remain deployment checks; no Lighthouse score is claimed.
+- Review protection is emitted into all six HTML files, robots.txt and response headers. Updated review ZIP is available under release/. Nothing deployed and DNS/Wix unchanged.
+
+- Final playback regression: individual source errors bubbled to the video handler and disabled valid fallback playback. Added a failing regression test, guarded fatal video errors, then reran the suite. Generated-build browser playback confirmed 1280×720, 52.343958 seconds, playing successfully.

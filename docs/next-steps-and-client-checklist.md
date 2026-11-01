@@ -6,7 +6,7 @@ Updated: 1 November 2026
 
 The primary project is now `/Users/daleal/Projects/rh-detailing`. Open this folder in Codex and your editor for future work. The former `Documents/ChatGPT/RH Detailing` folder has been moved. The Desktop copy is an older duplicate: do not continue editing both copies or syncing changes back to it.
 
-The contact form and chat-style message panel are implemented using Web3Forms, but sending remains disabled until a key is added. The Instagram gallery integration is prepared for Behold; it currently falls back to a profile link until connected. Individual Google reviews have not been implemented. The design is approved at this stage.
+The contact form and chat-style message panel are implemented using Web3Forms. The supplied public key is configured in the ignored local environment file; Cloudflare needs the same environment variable before deployment. Live delivery is not yet confirmed. The Instagram gallery integration is prepared for Behold; it currently falls back to a profile link until connected. A manually maintained Google rating badge sits beneath Instagram (5.0 from 53 reviews, checked 1 November 2026). Individual review cards have not been implemented. The design is approved at this stage.
 
 A Cloudflare review upload is available at `release/rh-detailing-review.zip`. Nothing has been published to the client's Cloudflare account and no Wix or domain settings have changed.
 
@@ -123,9 +123,9 @@ Source: [Cloudflare Pages custom domains](https://developers.cloudflare.com/page
 
 ## Implementation checklist for the next session
 
-- [ ] Open `/Users/daleal/Projects/rh-detailing` as the working project; stop old preview servers and restart from this folder.
-- [ ] Receive the empty GitHub repository URL and connect this project's existing Git repository.
-- [ ] Review the first commit: include source and documentation; exclude `.env.local`, dependencies and generated build/release folders. Do not overwrite the existing repository metadata.
+- [x] Opened `/Users/daleal/Projects/rh-detailing` as the working project and restarted the preview from this folder.
+- [x] Connected and pushed the existing Git repository to `git@github.com:dale976/rh-detailing.git` on `main`.
+- [x] Reviewed the first commit; local environment, dependencies and generated output are excluded.
 - [ ] Choose Cloudflare Git integration or Direct Upload, accept the client's membership invitation and publish a review URL in their account.
 - [ ] Add Web3Forms configuration and confirm delivery through both forms.
 - [ ] Connect Behold and check the six-post gallery with real content.

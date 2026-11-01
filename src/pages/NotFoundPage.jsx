@@ -5,6 +5,7 @@ export default function NotFoundPage() {
   return (
     <section className="container page-intro not-found">
       <PageMeta
+        noindex
         title="Page not found | RH Detailing"
         description="This page could not be found. Explore RH Detailing’s services or get in touch."
       />

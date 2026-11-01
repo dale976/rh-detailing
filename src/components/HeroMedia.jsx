@@ -1,8 +1,9 @@
+import { isPlaybackFailure } from '../lib/media.js';
 import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
 
 /** Decorative video, with a photo fallback and no downloads for reduced motion. */
-export default function HeroMedia({ poster, alt }) {
+export default function HeroMedia({ poster, posterSmall, alt }) {
   const videoRef = useRef(null);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -41,9 +42,11 @@ export default function HeroMedia({ poster, alt }) {
       <img
         className="hero-image"
         src={poster}
+        srcSet={`${posterSmall} 640w, ${poster} 1280w`}
+        sizes="100vw"
         alt={alt}
-        width="1920"
-        height="1080"
+        width="1280"
+        height="720"
         fetchPriority="high"
       />
       {videoEnabled && (
@@ -51,7 +54,6 @@ export default function HeroMedia({ poster, alt }) {
           <video
             ref={videoRef}
             className={`hero-video ${hasPlayed ? 'has-played' : ''}`}
-            src="/detailing-hero.mp4"
             poster={poster}
             autoPlay
             loop
@@ -65,8 +67,17 @@ export default function HeroMedia({ poster, alt }) {
               setHasPlayed(true);
             }}
             onPause={() => setIsPlaying(false)}
-            onError={() => setVideoEnabled(false)}
-          />
+            onError={(event) => {
+              if (isPlaybackFailure(event)) setVideoEnabled(false);
+            }}
+          >
+            <source
+              src="/detailing-hero-mobile.mp4"
+              media="(max-width: 600px)"
+              type="video/mp4"
+            />
+            <source src="/detailing-hero.mp4" type="video/mp4" />
+          </video>
           <button
             className="hero-video-toggle"
             type="button"

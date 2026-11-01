@@ -8,13 +8,14 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
+    "build": "node scripts/build.mjs",
     "preview": "vite preview --host 127.0.0.1",
     "test": "node --test tests/*.test.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run format:check && npm test && npm run build",
-    "build:review": "node scripts/build-review.mjs"
+    "check": "npm run format:check && npm test && npm run build && npm run test:seo",
+    "build:review": "node scripts/build-review.mjs",
+    "test:seo": "CHECK_SEO_BUILD=production node --test tests/seo-build.test.js"
   },
   "dependencies": {
     "react": "19.2.6",

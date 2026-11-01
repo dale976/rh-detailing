@@ -1,9 +1,14 @@
+import { business, socialLinks } from '../content/business.js';
 import InstagramGallery from '../components/InstagramGallery.jsx';
+import GoogleReviews from '../components/GoogleReviews.jsx';
 import { Link } from 'react-router-dom';
 import { services } from '../content/services.js';
-import hero from '../assets/detailing-studio.jpg';
-import wash from '../assets/detailing-wash.jpg';
-import interior from '../assets/detailing-finish.jpg';
+import hero from '../assets/detailing-studio-1280.webp';
+import heroSmall from '../assets/detailing-studio-640.webp';
+import wash from '../assets/detailing-wash-1280.webp';
+import washSmall from '../assets/detailing-wash-640.webp';
+import interior from '../assets/detailing-finish-1280.webp';
+import interiorSmall from '../assets/detailing-finish-640.webp';
 import PageMeta from '../components/PageMeta.jsx';
 import SectionHeading from '../components/SectionHeading.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
@@ -17,9 +22,28 @@ export default function HomePage() {
         title="RH Detailing | Paint correction & ceramic coatings in Surrey"
         description="Specialist paint correction, ceramic coatings and mobile valeting. Based in Lightwater, serving Surrey, Hampshire and Berkshire since 2021."
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: business.name,
+            url: 'https://www.rhdetailing.co.uk/',
+            telephone: business.phoneHref.replace('tel:', ''),
+            email: business.email,
+            areaServed: business.serviceAreas,
+            sameAs: [
+              ...socialLinks.map((link) => link.href),
+              'https://maps.app.goo.gl/WxkPfmMUoBfLd6wn7',
+            ],
+          }).replace(/</g, '\u003c'),
+        }}
+      />
       <section className="hero" aria-labelledby="hero-title">
         <HeroMedia
           poster={hero}
+          posterSmall={heroSmall}
           alt="A Mercedes receiving a thorough snow-foam wash by RH Detailing"
         />
         <div className="hero-shade" />
@@ -93,9 +117,11 @@ export default function HomePage() {
           <figure className="about-image">
             <img
               src={wash}
+              srcSet={`${washSmall} 640w, ${wash} 1280w`}
+              sizes="(max-width: 800px) 100vw, 50vw"
               alt="RH Detailing carefully washing a silver Mercedes on a customer's driveway"
-              width="3840"
-              height="2160"
+              width="1280"
+              height="720"
               loading="lazy"
             />
             <figcaption>
@@ -175,9 +201,11 @@ export default function HomePage() {
           <figure className="workmanship-photo">
             <img
               src={interior}
+              srcSet={`${interiorSmall} 640w, ${interior} 1280w`}
+              sizes="(max-width: 800px) 100vw, 50vw"
               alt="Detailed Mercedes interior, including leather seats, steering wheel and dashboard"
-              width="3840"
-              height="2160"
+              width="1280"
+              height="720"
               loading="lazy"
             />
             <figcaption>
@@ -189,6 +217,7 @@ export default function HomePage() {
       </section>
 
       <InstagramGallery />
+      <GoogleReviews />
       <ContactBanner />
     </>
   );

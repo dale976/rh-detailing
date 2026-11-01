@@ -1,13 +1,20 @@
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { business } from '../content/business.js';
 import { services } from '../content/services.js';
-import interior from '../assets/detailing-finish.jpg';
+import interior from '../assets/detailing-finish-1280.webp';
+import interiorSmall from '../assets/detailing-finish-640.webp';
 import EnquiryForm from '../components/EnquiryForm.jsx';
 import PageMeta from '../components/PageMeta.jsx';
 
 export default function ContactPage() {
   const [params] = useSearchParams();
-  const service = services.find((item) => item.id === params.get('service'));
+  // Match the static HTML on first render, then apply enquiry query parameters.
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+  const service = ready
+    ? services.find((item) => item.id === params.get('service'))
+    : undefined;
   const subject = service
     ? `Enquiry: ${service.name}`
     : 'Vehicle detailing enquiry';
@@ -86,9 +93,12 @@ export default function ContactPage() {
           <figure>
             <img
               src={interior}
+              srcSet={`${interiorSmall} 640w, ${interior} 1280w`}
+              sizes="(max-width: 800px) 100vw, 40vw"
+              loading="lazy"
               alt="Carefully finished Mercedes cabin with clean leather and dashboard"
-              width="3840"
-              height="2160"
+              width="1280"
+              height="720"
             />
             <figcaption>Care in every detail.</figcaption>
           </figure>
