@@ -37,3 +37,11 @@ This is a local build and preview. The existing Wix website, domain and hosting 
 - Review protection is emitted into all six HTML files, robots.txt and response headers. Updated review ZIP is available under release/. Nothing deployed and DNS/Wix unchanged.
 
 - Final playback regression: individual source errors bubbled to the video handler and disabled valid fallback playback. Added a failing regression test, guarded fatal video errors, then reran the suite. Generated-build browser playback confirmed 1280×720, 52.343958 seconds, playing successfully.
+
+## Cloudflare review deployment — 2 November 2026
+
+- Deployed commit `30f9c37` from `dale976/rh-detailing`, branch `main`, to https://rh-detailing.pages.dev/ in the client's Cloudflare account. Git pushes to main trigger builds automatically.
+- Build command `node scripts/build.mjs --review`, output `dist`, Node 22. Public Web3Forms access key configured for build-time use; Behold remains unconfigured.
+- HTTPS requests return 200 for all five pages and robots.txt; unknown path returns 404. `/about-us` returns 301 with location `/#about`. Confirmed `X-Robots-Tag: noindex, nofollow` and the HTML noindex meta tag.
+- Hosted browser check: homepage imagery/video render; service-specific Contact URL selects Deep clean and enables the configured form. No live messages sent; inbox delivery still requires client confirmation.
+- Wix, DNS, custom domain and email settings were not changed. Review URL is public to anyone with the link; noindex is not authentication.

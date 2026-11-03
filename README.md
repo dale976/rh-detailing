@@ -81,3 +81,9 @@ See [content provenance](docs/content-sources.md) and [verification](docs/verifi
 See [client review setup](docs/client-review-setup.md) for Web3Forms configuration, the Behold Instagram connection and uploading to the client's separate Cloudflare account. Copy `.env.example` to `.env.local` to configure the public integration keys. Cloudflare builds need their own environment variables; `.env.local` is ignored by Git and is not uploaded.
 
 `npm run build:review` creates `release/rh-detailing-review.zip`, ready for Cloudflare Pages Direct Upload with indexing disabled. Normal `npm run build` creates the production bundle.
+
+### Instagram fallback snapshot
+
+The gallery uses a saved six-post feed snapshot while the live Behold feed is loading, empty or unavailable. Metadata lives in `src/content/instagram-fallback.json`; thumbnails are local files under `public/instagram-fallback/`. Each tile links to its original Instagram post. Video posts use a saved thumbnail, not a copied video.
+
+To refresh manually with the configured `VITE_BEHOLD_FEED_ID`, run `npm run refresh:instagram`, inspect the resulting posts, and commit the JSON and thumbnails together. Rebuild/redeploy to publish the updated snapshot. This makes one feed request and downloads up to six thumbnails; it is never run automatically during a build. Failed downloads or an empty feed leave the current snapshot unchanged. A saved snapshot can become outdated; remove deleted/private posts if the client withdraws them.

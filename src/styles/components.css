@@ -132,10 +132,11 @@
   right: max(var(--gutter), calc((100% - var(--container)) / 2));
   z-index: 1;
   min-height: 44px;
+  min-width: 44px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 15px;
+  justify-content: center;
+  padding: 10px;
   border: 1px solid #77776a;
   color: var(--color-text);
   background: #10110fbf;
@@ -1016,11 +1017,28 @@
     font-size: 19px;
   }
   .process-list {
-    flex-direction: column;
+    display: grid;
     gap: 0;
   }
   .process-step {
     grid-template-columns: 35px 1fr;
+    flex: none;
+  }
+  .workmanship-photo {
+    aspect-ratio: auto;
+  }
+  .workmanship-photo img {
+    position: static;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .workmanship-photo figcaption {
+    position: static;
+    padding: 20px 22px;
+    background: var(--color-surface);
+  }
+  .workmanship-photo figcaption span:last-child {
+    font-size: 22px;
   }
   .contact-banner {
     padding-block: 65px;
@@ -1118,10 +1136,27 @@
     font-size: var(--text-label);
   }
   .footer-main {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 32px 20px;
+    padding-bottom: 36px;
   }
   .footer-brand {
-    grid-column: auto;
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+  .footer-brand img {
+    margin-inline: auto;
+  }
+  .footer-main nav {
+    gap: 6px;
+  }
+  .footer-main nav a {
+    padding-block: 4px;
+  }
+  .footer-bottom {
+    align-items: center;
+    text-align: center;
+    padding-bottom: 88px;
   }
   .footer-contact > .eyebrow {
     max-width: none;

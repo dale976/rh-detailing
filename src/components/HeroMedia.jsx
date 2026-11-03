@@ -87,7 +87,6 @@ export default function HeroMedia({ poster, posterSmall, alt }) {
             onClick={togglePlayback}
           >
             <Icon name={isPlaying ? 'pause' : 'play'} />
-            {isPlaying ? 'Pause video' : 'Play video'}
           </button>
         </>
       )}

@@ -15,7 +15,8 @@
     "format:check": "prettier --check .",
     "check": "npm run format:check && npm test && npm run build && npm run test:seo",
     "build:review": "node scripts/build-review.mjs",
-    "test:seo": "CHECK_SEO_BUILD=production node --test tests/seo-build.test.js"
+    "test:seo": "CHECK_SEO_BUILD=production node --test tests/seo-build.test.js",
+    "refresh:instagram": "node scripts/refresh-instagram.mjs"
   },
   "dependencies": {
     "react": "19.2.6",

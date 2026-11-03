@@ -47,6 +47,11 @@ export default function PrivacyPage() {
           own privacy policy.
         </p>
         <p>
+          A saved selection of RH Detailing’s public posts and thumbnails is
+          also hosted by this website, so the gallery remains available when the
+          live feed cannot load.
+        </p>
+        <p>
           See{' '}
           <a
             href="https://behold.so/privacy/"
