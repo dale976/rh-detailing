@@ -58,7 +58,7 @@ export default function HomePage() {
             DONE <em>PROPERLY.</em>
           </h1>
           <p className="hero-description">
-            Restore the finish. Protect the feeling.
+            Exceptional results. Proper car care.
             <br />
             Paint correction, ceramic coatings and meticulous
             <br className="desktop-break" /> car care from someone who shares
@@ -87,7 +87,7 @@ export default function HomePage() {
       <section id="services" className="section container services-section">
         <div id="care-introduction" className="services-intro">
           <SectionHeading eyebrow="Care without compromise">
-            Good looks.
+            Expert care. Exceptional Results.
             <br />
             <span className="text-gold">Lasting protection.</span>
           </SectionHeading>
@@ -130,7 +130,7 @@ export default function HomePage() {
             </figcaption>
           </figure>
           <div className="about-copy">
-            <SectionHeading eyebrow="The person behind the polish">
+            <SectionHeading eyebrow="Experience you can trust.">
               A passion for cars.
               <br />
               An eye for <span className="text-gold">detail.</span>
